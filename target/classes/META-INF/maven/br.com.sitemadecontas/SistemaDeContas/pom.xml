@@ -12,7 +12,7 @@
 	<artifactId>SistemaDeContas</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>SistemaDeContas</name>
-	<description>Demo project for Spring Boot</description>
+	<description>Sistema para gerencia pagamentos de contas</description>
 	<properties>
 		<java.version>11</java.version>
 	</properties>
