@@ -2,13 +2,11 @@ package br.com.sitemadecontas.conta;
 
 import java.util.Date;
 
-import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.validation.constraints.NotBlank;
@@ -16,9 +14,7 @@ import javax.validation.constraints.NotNull;
 
 import br.com.sitemadecontas.usuario.Usuario;
 
-@Entity
-@Table(name="contas")
-public class Conta {
+public class ContaRequest {
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
@@ -44,9 +40,9 @@ public class Conta {
 	@JoinColumn(name="usuario_id")
 	private Usuario usuario;
 	
-	public Conta() {}
+	public ContaRequest() {}
 
-	public Conta(int id, @NotBlank String descricao, @NotBlank double valor, Date dataMaxima, Date dataPagamento,
+	public ContaRequest(int id, @NotBlank String descricao, @NotBlank double valor, Date dataMaxima, Date dataPagamento,
 			@NotBlank boolean paga, @NotNull Usuario usuario) {
 		super();
 		this.id = id;
