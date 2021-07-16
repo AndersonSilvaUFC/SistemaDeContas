@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import br.com.sitemadecontas.exceptions.CriptoException;
 import br.com.sitemadecontas.exceptions.NomeExistsException;
+import br.com.sitemadecontas.exceptions.ServiceLoginException;
 import br.com.sitemadecontas.util.Util;
 
 @Service
@@ -15,9 +16,9 @@ public class UsuarioService{
 	@Autowired
 	private UsuarioRepository usuarioRepository;
 	
-	public void salva(Usuario usuario) throws Exception{
+	public void salva(Usuario usuario) throws NomeExistsException,CriptoException{
 		try {
-			if(usuarioRepository.findByNome(usuario.getNome()) == null) {
+			if(usuarioRepository.findByNome(usuario.getNome()) != null) {
 				throw new NomeExistsException("Nome de usuário já existente");
 			}
 			
@@ -30,5 +31,8 @@ public class UsuarioService{
 		usuarioRepository.save(usuario);
 	}
 	
-	
+	public Usuario login(String nome, String senha) throws ServiceLoginException{
+		Usuario usuario = usuarioRepository.buscarLogin(nome, senha);
+		return usuario;
+	}
 }

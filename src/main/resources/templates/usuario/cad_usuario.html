@@ -15,7 +15,9 @@
 			<div class="mt-5 cad-form">
 				<form action="/usuarios/cadastrar/create"  method="POST">
 					<h3 class="text-center mb-5">Cadastrar Usuário</h3>
-
+					<div class="alert alert-danger" role="alert" th:if="${msg}">
+						<strong th:text="${msg}"></strong>
+					</div>
 					<div class="form-group"> 
 						<label class="form-label">Nome</label>
 						<input class="form-control" type="text" name="nome" 
