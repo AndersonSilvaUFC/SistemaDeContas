@@ -7,13 +7,13 @@
 			Cadastrar Usuário
 		</title>
 		<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-		<link rel="stylesheet" type="text/css" th:href="@{/css/styles.css}" />
+		<link rel="stylesheet" type="text/css" th:href="@{/css/cadastra-usuario.css}" />
 	</head>
 	
 	<body>
 		<div class="container">
 			<div class="mt-5 cad-form">
-				<form action="/atividades/create"  method="POST">
+				<form action="/usuarios/cadastrar/create"  method="POST">
 					<h3 class="text-center mb-5">Cadastrar Usuário</h3>
 
 					<div class="form-group"> 
@@ -24,14 +24,14 @@
 					
 					<div class="form-group"> 
 						<label class="form-label">Senha</label>
-						<input class="form-control" type="password" name="senha" 
+						<input class="form-control" type="password" name="senha" minlength="6"
 						placeholder="Digite sua senha (pelo menos 6 caracteres)" required/>
 					</div>
 					
 					<button tyupe="submit" class="btn btn-success">Cadastar</button>
 					
 				</form>
-				<button class="btn btn-info">Voltar </button>
+				<a th:href="@{/login}"><button  class="btn btn-info"> Voltar </button></a>
 			</div>
 		</div>
 		<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
