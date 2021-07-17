@@ -39,7 +39,7 @@ public class UsuarioController {
 		return mv;
 	}
 	
-	@PostMapping("/login/logar")
+	@PostMapping("/contas/home")
 	public ModelAndView logar(@Valid UsuarioRequest usuarioRequest, HttpSession session) throws NoSuchAlgorithmException, ServiceLoginException{
 		ModelAndView mv = new ModelAndView("usuario/login");
 		
@@ -50,6 +50,7 @@ public class UsuarioController {
 			mv.addObject("msg", "Usuário ou senha inválido");
 		}else {
 			session.setAttribute("usuarioLogado", usuario);
+			session.setAttribute("count",0);
 			ContaController contaController = new ContaController(contaRepository,session);
 			return contaController.index();
 		}

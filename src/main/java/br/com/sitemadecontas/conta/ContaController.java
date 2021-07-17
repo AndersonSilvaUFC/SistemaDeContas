@@ -15,7 +15,7 @@ import br.com.sitemadecontas.usuario.Usuario;
 import ch.qos.logback.core.net.SyslogOutputStream;
 
 @Controller
-@RequestMapping("")
+@RequestMapping("/contas")
 public class ContaController {
 	
 	private HttpSession session;
@@ -32,11 +32,12 @@ public class ContaController {
 	public ModelAndView index() {
 		ModelAndView mv = new ModelAndView();
 		Usuario usuario = (Usuario) session.getAttribute("usuarioLogado");
+		int count = (int) session.getAttribute("count");
 		if(usuario != null) {
-			
 			mv.setViewName("index");
 			List<Conta> contasPendentes = contaRepository.findByUsuarioAndPaga(usuario,false);
 			mv.addObject("contasPendentes",contasPendentes);
+			session.setAttribute("count", count+1);
 			return mv;
 		}else {
 			mv.setViewName("usuario/login");
@@ -44,7 +45,7 @@ public class ContaController {
 		}
 	}
 	
-	@PostMapping("/contas/logout")
+	@PostMapping("/logout")
 	public ModelAndView logout() {
 		ModelAndView mv = new ModelAndView("usuario/login");
 		Usuario usuario = (Usuario) session.getAttribute("usuarioLogado");
