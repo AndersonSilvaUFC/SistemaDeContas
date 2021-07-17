@@ -1,6 +1,7 @@
 package br.com.sitemadecontas.usuario;
 
 import java.security.NoSuchAlgorithmException;
+import java.util.List;
 
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
@@ -13,6 +14,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
+import br.com.sitemadecontas.conta.Conta;
+import br.com.sitemadecontas.conta.ContaController;
 import br.com.sitemadecontas.conta.ContaRepository;
 import br.com.sitemadecontas.exceptions.CriptoException;
 import br.com.sitemadecontas.exceptions.NomeExistsException;
@@ -28,14 +31,7 @@ public class UsuarioController {
 	
 	@Autowired
 	private UsuarioService usuarioService;
-	
-	@GetMapping("/home")
-	public ModelAndView index() {
-		ModelAndView mv = new ModelAndView("index");
 		
-		return mv;
-	}
-	
 	@GetMapping("/login")
 	public ModelAndView login() {
 		ModelAndView mv = new ModelAndView("usuario/login");
@@ -54,7 +50,8 @@ public class UsuarioController {
 			mv.addObject("msg", "Usuário ou senha inválido");
 		}else {
 			session.setAttribute("usuarioLogado", usuario);
-			return index();
+			ContaController contaController = new ContaController(contaRepository,session);
+			return contaController.index();
 		}
 		
 		

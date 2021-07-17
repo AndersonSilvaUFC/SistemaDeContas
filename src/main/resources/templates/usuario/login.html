@@ -12,10 +12,10 @@
 	
 	<body>
 		<div class="container">
-			<div class="mt-5 cad-form form-login">
+			<div class="mt-5 log-form form-login">
 				
 				<form action="/login/logar"  method="POST">
-					<h3 class="text-center mb-5">Login</h3>
+					<h3 class="text-center">Login</h3>
 					<div class="alert alert-danger" role="alert" th:if="${msg}">
 						<strong th:text="${msg}"></strong>
 					</div>
@@ -30,9 +30,8 @@
 						<input class="form-control" type="password" name="senha" minlength="6"
 						placeholder="Digite sua senha (pelo menos 6 caracteres)" required/>
 					</div>
-					<a th:href="@{/usuarios/cadastrar}">Não possui login? Cadastre aqui</a><br>
+					<p class="text-center"><a th:href="@{/usuarios/cadastrar}">Não possui login? Cadastre aqui</a></p>
 					<button tyupe="submit" class="btn btn-success">Login</button>
-					
 				</form>
 			</div>
 		</div>
