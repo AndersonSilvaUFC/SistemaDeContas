@@ -18,7 +18,7 @@ import ch.qos.logback.core.net.SyslogOutputStream;
 @RequestMapping("/contas")
 public class ContaController {
 	
-	private HttpSession session;
+	private HttpSession session ;
 	
 	@Autowired
 	private ContaRepository contaRepository;
@@ -31,29 +31,33 @@ public class ContaController {
 	@GetMapping("/home")
 	public ModelAndView index() {
 		ModelAndView mv = new ModelAndView();
-		Usuario usuario = (Usuario) session.getAttribute("usuarioLogado");
-		int count = (int) session.getAttribute("count");
-		if(usuario != null) {
-			mv.setViewName("index");
-			List<Conta> contasPendentes = contaRepository.findByUsuarioAndPaga(usuario,false);
-			mv.addObject("contasPendentes",contasPendentes);
-			session.setAttribute("count", count+1);
-			return mv;
-		}else {
-			mv.setViewName("usuario/login");
-			return mv;
+		if(session != null) {
+			Usuario usuario = (Usuario) session.getAttribute("usuarioLogado");
+			if(usuario != null) {
+				int count = (int) session.getAttribute("count");
+				mv.setViewName("index");
+				List<Conta> contasPendentes = contaRepository.findByUsuarioAndPaga(usuario,false);
+				mv.addObject("contasPendentes",contasPendentes);
+				session.setAttribute("count", count+1);
+				return mv;
+			}
 		}
+		mv.setViewName("redirect:/login");
+		return mv;
 	}
 	
 	@PostMapping("/logout")
 	public ModelAndView logout() {
 		ModelAndView mv = new ModelAndView("usuario/login");
-		Usuario usuario = (Usuario) session.getAttribute("usuarioLogado");
-		if(usuario != null) {
-			session.setAttribute("usuarioLogado", null);
-			session.invalidate();
+		if(session != null) {
+			Usuario usuario = (Usuario) session.getAttribute("usuarioLogado");
+			if(usuario != null) {
+				session.setAttribute("usuarioLogado", null);
+				session.setAttribute("count", 0);
+				session.invalidate();
+			}
+			mv.addObject("msg", "Seção encerrada");
 		}
-		mv.addObject("msg", "Seção encerrada");
 		return mv;
 	}
 }
