@@ -41,6 +41,33 @@
 		            </nav>
 		        </div>
 		    </header>
+		    
+		    <div id="main">
+	    		<h2 class="text-center">Contas pendentes</h2>
+				<table id="tabela" class="table table-light table-striped table-bordered">
+					<thead>
+						<tr>
+							<th>DESCRIÇÃO</th>
+							<th>VALOR</th>
+							<th>PRAZO DE PAGAMENTO</th>
+							<th> AÇÕES </th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr th:each = "conta: ${contasPendentes}">
+							<td id="descricao" th:text="${conta.descricao}"></td>
+							<td th:text="${conta.valor}"></td>
+							<td th:text="${#dates.format(conta.dataMaxima, 'dd-MM-yyyy')}"></td>
+							<td width="400px" class="text-center">
+							<a th:href="@{/contas/editar/{id}(id=${conta.id})}" class="btn btn-warning">Editar</a>
+							<a th:href="@{/contas/excluir/{id}(id=${conta.id})}" class="btn btn-danger">Excluir</a>
+							<a th:href="@{/contas/marcarPaga/{id}(id=${conta.id})}" class="btn btn-success">Marcar como paga</a>
+							</td>
+						<tr>
+					</tbody>
+				</table>
+		    </div>
+		    
 		</div>
 		<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 	</body>

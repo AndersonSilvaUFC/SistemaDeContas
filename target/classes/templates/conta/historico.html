@@ -13,19 +13,6 @@
 	
 	<body>		
 		<div class="container">
-			<div id="alerta" class="alert alert-success d-flex align-items-center alert-dismissible fade show" role="alert" th:if="${session.usuarioLogado} and ${session.count} < 2">
- 				<svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
-				    <symbol id="check-circle-fill" fill="currentColor" viewBox="0 0 16 16">
-				    	<path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z"/>
-				    </symbol>
-				</svg>
-				<div class="text-center">
-		 			<svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="Success:"><use xlink:href="#check-circle-fill"/></svg>
-	
-		 			<strong>Seja bem vindo <span th:text="${session.usuarioLogado.nome}"></span></strong>
-		  			<button type="button" onclick="fechaAlerta()" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-				</div>
-			</div>
 			<header>
 		        <div class="container" id="nav-container">
 		            <nav id="nav-main" class="navbar navbar-expand-lg">
@@ -43,29 +30,29 @@
 		    </header>
 		    
 		    <div id="main">
-	    		<h2 class="text-center">Contas pendentes</h2>
+	    		<h2 class="text-center">Contas pagas</h2>
 				<table id="tabela" class="table table-light table-striped table-bordered">
 					<thead>
 						<tr>
 							<th>DESCRIÇÃO</th>
 							<th>VALOR</th>
-							<th>PRAZO DE PAGAMENTO</th>
+							<th>DATA DO PAGAMENTO</th>
 							<th> AÇÕES </th>
 						</tr>
 					</thead>
 					<tbody>
-						<tr th:each = "conta: ${contasPendentes}">
+						<tr th:each = "conta: ${contasPagas}">
 							<td id="descricao" th:text="${conta.descricao}"></td>
 							<td th:text="${conta.valor}"></td>
-							<td th:text="${#dates.format(conta.dataMaxima, 'dd-MM-yyyy')}"></td>
+							<td th:text="${#dates.format(conta.dataPagamento, 'dd-MM-yyyy')}"></td>
 							<td width="400px" class="text-center">
-							<a th:href="@{/contas/editar/{id}(id=${conta.id})}" class="btn btn-warning">Editar</a>
-							<a th:href="@{/contas/excluir/{id}(id=${conta.id})}" class="btn btn-danger">Excluir</a>
-							<a th:href="@{/contas/marcarPaga/{id}(id=${conta.id})}" class="btn btn-success">Marcar como paga</a>
+							<a th:href="@{/contas/historico/excluir/{id}(id=${conta.id})}" class="btn btn-danger">Excluir</a>
 							</td>
 						<tr>
 					</tbody>
 				</table>
+				<a id="excluirHistorico" th:if="${not #lists.isEmpty(contasPagas)}" th:href="@{/contas/historico/excluirHistorico}" class="btn btn-danger">Apagar Histórico</a>
+				
 		    </div>
 		    
 		</div>
