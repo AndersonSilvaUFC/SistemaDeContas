@@ -109,4 +109,10 @@ public class ContaRequest {
 	public void setUsuario(Usuario usuario) {
 		this.usuario = usuario;
 	}
+	public Conta toModel() {
+		return (new Conta(getId(), 
+				getDescricao(),getValor(),
+				getDataMaxima(), getDataPagamento(),
+				isPaga(),getUsuario()));
+	}
 }
