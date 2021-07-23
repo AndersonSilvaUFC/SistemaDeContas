@@ -34,12 +34,10 @@ public class ContaRequest {
 	
 	@Temporal(TemporalType.TIMESTAMP)
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
-	@FutureOrPresent
 	private Date dataMaxima;
 	
 	@Temporal(TemporalType.TIMESTAMP)
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
-	@PastOrPresent
 	private Date dataPagamento;
 	
 	@NotNull

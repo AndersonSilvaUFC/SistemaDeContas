@@ -4,10 +4,11 @@
 	<head>
 		<meta charset="utf-8">
 		<title>
-			Home - Sistema de Contas
+			Histórico - Sistema de Contas
 		</title>
 		<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 		<link rel="stylesheet" th:href="@{/css/home.css}" type="text/css" />
+		<script src="https://kit.fontawesome.com/74216cf7aa.js" crossorigin="anonymous"></script>
 		<script th:src="@{/js/home.js}" type="text/javascript"></script>
 	</head>
 	
@@ -18,10 +19,12 @@
 		            <nav id="nav-main" class="navbar navbar-expand-lg">
 		                <div class="navbar-collapse justify-content-end" id="navbar-links">
 		                    <div class="navbar-nav">
-		                        <a th:href="@{/contas/home}" class="nav-item nav-link" id="home-menu">Home</a>
-		                        <a th:href="@{/contas/historico}" class="nav-item nav-link" id="historico-menu">Histórico</a>
+		                        <a th:href="@{/contas/home}" class="nav-item nav-link" id="home-menu">
+		                        <i class="fas fa-home"></i>HOME</a>
+		                        <a th:href="@{/contas/historico}" class="nav-item nav-link" id="historico-menu">
+								<i class="fas fa-history"></i>HISTÓRICO</a>
 		                        <form action="/contas/logout" method="POST"">
-		                        	<button type="submit"" class="nav-item nav-link" id="logout-button">Logout</button>
+		                        	<button type="submit"" class="nav-item nav-link" id="logout-button">LOGOUT<i class="fas fa-sign-out-alt"></i></button>
 		                        </form>
 		                    </div>                
 		                </div>
@@ -51,7 +54,7 @@
 						<tr>
 					</tbody>
 				</table>
-				<a id="excluirHistorico" th:if="${not #lists.isEmpty(contasPagas)}" th:href="@{/contas/historico/excluirHistorico}" class="btn btn-danger">Apagar Histórico</a>
+				<a th:if="${not #lists.isEmpty(contasPagas)}" th:href="@{/contas/historico/excluirHistorico}"><button id="btn-apagar"  class="btn btn-danger"> Apagar Histórico </button></a>
 				
 		    </div>
 		    

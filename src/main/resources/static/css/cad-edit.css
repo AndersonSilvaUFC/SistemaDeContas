@@ -3,7 +3,6 @@ body{
 	max-width: 100%;
 	padding: 0;
 	background-image: url("../img/fundo1.png");
-	color: white;
 }
 
 .text-center{
@@ -16,49 +15,36 @@ body{
 	margin: 0;
 }
 
-#alerta{
-	max-width: 100%;
-	width: 100%;
-	border-radius: 0;
-	margin: 0;
-}
-
 /* main */
 
-h2{
+h3{
 	font-family: 'Courier New', Courier, monospace;
 	font-weight: bold;
 	text-transform: uppercase;
 }
 
-#main{
-	margin: 80px 50px;
+.cad-edit-form{
+	max-width: 80%;
+	width: 80%;
+	display: flex;
+	margin: 0 auto;
 }
 
-#tabela{
-	margin-top: 30px;
+.form-cad-edit{
+	max-width: 100%;
+	width: 100%;
 }
 
 .btn{
+	height: 40px;
 	color:white;
 	font-family: 'Courier New', Courier, monospace;
 	font-weight: bold;
 }
 
 .btn-info{
-	height: 50px;
 	background-color: #4682B4;
 	border-color: #4682B4;
-}
-
-.btn-warning:hover{
-	color:black;
-	background-color: white;
-}
-
-.btn-danger:hover{
-	color:black;
-	background-color: white;
 }
 
 .btn-success:hover{
@@ -70,20 +56,6 @@ h2{
 	color:black;
 	background-color: white;
 	border-color: #4682B4;
-}
-
-#btn-apagar{
-	height: 50px;
-}
-
-td{
-	text-align: center;
-	vertical-align: middle;
-}
-
-td#descricao{
-	max-width: 400px;
-	overflow: auto;
 }
 
 /* Barra de navegação */

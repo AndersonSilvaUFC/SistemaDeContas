@@ -82,3 +82,56 @@ button.btn.btn-success{
 	margin-top: 10px;
 	margin-bottom: 10px;
 }
+
+
+/* Barra de navegação */
+#navbar-links{
+	margin-right: 40px;
+}
+
+i.fas{
+	margin-right: 10px;
+}
+
+i.fas.fa-sign-out-alt{
+	margin-left: 10px;
+}
+
+header, .navbar{
+    background-color:#4682B4;
+}
+
+#nav-container{
+    padding-top: 0;
+    padding-bottom: 0;
+}
+
+#logo{
+    width: 75px;
+}
+
+.navbar-brand{
+    padding: 0;
+    color: #FFF;
+}
+
+.navbar-brand:hover{
+    color: #FFF;
+}
+
+#navbar-links a{
+    color: #FFF;
+}
+
+.navbar-expand-lg .navbar-nav .nav-link{
+    padding: 1rem .8rem;
+}
+.nav-item nav-link{
+	margin-left: 100px;
+}
+
+#logout-button{
+	background-color: inherit;
+	color: white;
+	border: 0 none;
+}

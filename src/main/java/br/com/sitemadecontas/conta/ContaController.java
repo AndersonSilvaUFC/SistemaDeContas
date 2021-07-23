@@ -97,7 +97,7 @@ public class ContaController {
 			if(usuario != null) {
 				Conta conta = contaRepository.findById(id);
 				if(conta.getUsuario().getId() == usuario.getId()) {
-					mv.setViewName("conta/editar");
+					mv.setViewName("conta/edita_conta");
 					mv.addObject("usuario",usuario);
 					mv.addObject("conta", conta);
 					return mv;

@@ -32,6 +32,11 @@ public class UsuarioController {
 	@Autowired
 	private UsuarioService usuarioService;
 		
+	@GetMapping("")
+	public ModelAndView inicio() {
+		return login();
+	}
+	
 	@GetMapping("/login")
 	public ModelAndView login() {
 		ModelAndView mv = new ModelAndView("usuario/login");
