@@ -11,8 +11,12 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.validation.constraints.FutureOrPresent;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.PastOrPresent;
+
+import org.springframework.format.annotation.DateTimeFormat;
 
 import br.com.sitemadecontas.usuario.Usuario;
 
@@ -27,16 +31,20 @@ public class Conta {
 	@NotBlank
 	private String descricao;
 	
-	@NotBlank
+	@NotNull
 	private double valor;
 	
 	@Temporal(TemporalType.TIMESTAMP)
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
+	@FutureOrPresent
 	private Date dataMaxima;
 	
 	@Temporal(TemporalType.TIMESTAMP)
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
+	@PastOrPresent
 	private Date dataPagamento;
 	
-	@NotBlank
+	@NotNull
 	private boolean paga;
 	
 	@ManyToOne
@@ -46,8 +54,8 @@ public class Conta {
 	
 	public Conta() {}
 
-	public Conta(int id, @NotBlank String descricao, @NotBlank double valor, Date dataMaxima, Date dataPagamento,
-			@NotBlank boolean paga, @NotNull Usuario usuario) {
+	public Conta(int id, @NotBlank String descricao, @NotNull double valor, Date dataMaxima, Date dataPagamento,
+			@NotNull boolean paga, @NotNull Usuario usuario) {
 		super();
 		this.id = id;
 		this.descricao = descricao;
