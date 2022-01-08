@@ -1,2 +1,2 @@
 # SistemaDeContas
-A simple spring sytem to manager bills to pay.
+A simple spring system to manager bills to pay.
